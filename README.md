@@ -1,4 +1,4 @@
-Sinatra
+Music Wall
 =============
 
 Brought to you by Lighthouse Labs
