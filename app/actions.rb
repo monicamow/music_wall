@@ -1,11 +1,19 @@
+# testing sessions
+enable :sessions
+
 #Homepage (Root path)
 get '/' do
   erb :index
 end
 
 get '/tracks' do 
-  @tracks = Track.all
-  erb :'tracks/index'
+  if session[:id]
+    @user = User.find_by(id: session[:id])
+    @tracks = Track.all
+    erb :'tracks/index'
+  else
+    "YOU NEED TO LOGIN TO SEE THIS"
+  end  
 end
 
 get '/tracks/new' do
@@ -33,9 +41,6 @@ get '/tracks/:id' do
   erb :'tracks/show'
 end
 
-# testing sessions
-enable :sessions
-
 # get '/' do
 #   session["value"] ||= "Hello world!"
 #   "The cookie you've created contains the value: #{session["value"]}"
@@ -45,6 +50,34 @@ get '/login' do
   erb :login
 end
 
+# post login info
+post '/login' do
+  @user = User.find_by(username: params[:username], password: params[:password])
+  session[:id] = @user.id
+  redirect '/tracks'
+end
+
 get '/signup' do
+  @new_user = User.new
   erb :signup
+end
+
+post '/signup' do 
+    @new_user = User.new(
+    first_name: params[:first_name],
+    last_name: params[:last_name],
+    username: params[:username],
+    email: params[:email],
+    password: params[:password]
+    )
+  if @new_user.save
+    "You're signed up!"
+  else
+    "DO IT AGAIN"
+  end
+end
+
+get '/logout' do
+  session.clear
+  redirect '/'
 end

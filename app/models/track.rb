@@ -6,4 +6,7 @@ class Track < ActiveRecord::Base
   validates :author,
     presence: true
 
+  has_many :votes
+  belongs_to :user
+
 end
