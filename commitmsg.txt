@@ -1,5 +1,9 @@
-new views, new models and testing sessions
+added functioning sessions
 
-- added login and signup to views
-- added User and Vote models and db tables
-- links to login and signup pages on home page
+- get/post for login and signup started
+- must be logged in to see tracks page
+- html <p> to tell user they are logged in
+- added logout button
+- sign up creates new user
+- login searches for @user by username and password and then saves session[:id] = @user.id
+- NEED TO FIX: the way the tracks page accesses the current user/session

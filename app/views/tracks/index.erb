@@ -5,6 +5,7 @@
 <hr>
 <% @tracks.each do |track| %>
   <h3 style="color: #00B0B6"><a href="/tracks/<%= track.id %>" style="text-decoration: none !important"><%= track.song_title %></a> <small style="color: #000000">(by: <%= track.author %>)</small></h3>
+  <h4><%= track.votes.count %></h4>
   <small style="color: #CC0000">(time: <%= track.created_at %>)</small>
 <% end %>
 
