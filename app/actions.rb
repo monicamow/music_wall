@@ -9,7 +9,7 @@ end
 get '/tracks' do 
   if session[:id]
     @user = User.find_by(id: session[:id])
-    @tracks = Track.all
+    @tracks = Track.count_votes
     erb :'tracks/index'
   else
     "YOU NEED TO LOGIN TO SEE THIS"
