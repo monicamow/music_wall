@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :votes
   has_many :tracks
+  has_many :reviews
 
 
   # make validationg for user only being able to vote once for one track

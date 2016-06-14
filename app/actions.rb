@@ -98,6 +98,6 @@ post '/votes' do
   if @vote.save
     redirect '/tracks'
   else
-    erb :votes, locals: {vote: @vote}
+    erb :votes_errors, locals: {vote: @vote}
   end
 end

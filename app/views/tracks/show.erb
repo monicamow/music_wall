@@ -5,3 +5,6 @@
 <a href='/tracks'>Back to All Tracks</a>
 </div>
 
+<% @track.reviews.each do |review| %>
+  <%= review.user_review %>
+<% end %>
