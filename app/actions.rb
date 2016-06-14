@@ -95,6 +95,9 @@ post '/votes' do
     track_id: track_id,
     user_id: current_user.id
     )
-  @vote.save
-  redirect(back)
+  if @vote.save
+    redirect '/tracks'
+  else
+    erb :votes, locals: {vote: @vote}
+  end
 end

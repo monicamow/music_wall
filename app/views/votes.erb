@@ -1,0 +1,9 @@
+<% if @vote && @vote.errors.any? %>
+  <div style="color: #CC0000" class="alert alert-danger">
+    <% @vote.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  </div>
+<% end %>
+
+<a href='/tracks'>Back to All Tracks</a>
