@@ -77,7 +77,8 @@ post '/signup' do
     password: params[:password]
     )
   if @new_user.save
-    "You're signed up!"
+      session[:id] = @new_user.id
+      redirect '/tracks'
   else
     "DO IT AGAIN"
   end
