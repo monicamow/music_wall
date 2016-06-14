@@ -1,8 +1,14 @@
 <div style="margin: 10px">
 <h1 style="color: #076c6f">All Tracks</h1>
+<hr>
 <% @tracks.each do |track| %>
-  <h3 style="color: #00B0B6"><%= track.song_title %> <small style="color: #000000">(by: <%= track.author %>)</small></h3>
+  <h3 style="color: #00B0B6"><a href="/tracks/<%= track.id %>" style="text-decoration: none !important"><%= track.song_title %></a> <small style="color: #000000">(by: <%= track.author %>)</small></h3>
   <small style="color: #CC0000">(time: <%= track.created_at %>)</small>
 <% end %>
+
+<hr>
+<a href='/tracks/new'>Post a new track!</a>
+
 </div>
+
 

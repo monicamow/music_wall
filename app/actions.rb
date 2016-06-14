@@ -23,7 +23,13 @@ post '/tracks' do
   if @track.save
     redirect '/tracks'
   else
-    redirect '/tracks/new'
+    erb :'tracks/new'
   end
+end
+
+# show individual track posts
+get '/tracks/:id' do
+  @track = Track.find(params[:id])
+  erb :'tracks/show'
 end
 
