@@ -90,16 +90,11 @@ a {
  * Improve readability when focused and also mouse hovered in all browsers.
  */
 
-/*a:active,
+a:active,
 a:hover {
   outline: 0;
-}*/
-
-a:hover, a:visited, a:link, a:active
-{
-    color: #00B0B6;
-    text-decoration: none;
 }
+
 
 /* Text-level semantics
    ========================================================================== */
