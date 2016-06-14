@@ -1,6 +1,9 @@
 class Vote < ActiveRecord::Base
 
-  belongs_to :track, counter_cache: true
+  # failed scope/class method
+  #belongs_to :track, counter_cache: true
+
+  belongs_to :track
   belongs_to :user
 
   # make validationg for user only being able to vote once for one track

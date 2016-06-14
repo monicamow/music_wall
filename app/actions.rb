@@ -1,15 +1,21 @@
 # testing sessions
 enable :sessions
 
+helpers do
+  def current_user
+    User.find_by(id: session[:id])
+  end
+end
+
 #Homepage (Root path)
 get '/' do
   erb :index
 end
 
 get '/tracks' do 
-  if session[:id]
-    @user = User.find_by(id: session[:id])
-    @tracks = Track.count_votes
+  if current_user
+    #@tracks = Track.all.joins(:votes).group("tracks.id").order("count(votes.track_id) DESC")
+    @tracks = Track.all.joins("LEFT JOIN 'votes' on votes.track_id = tracks.id").group("tracks.id").order("count(votes.track_id) DESC")
     erb :'tracks/index'
   else
     "YOU NEED TO LOGIN TO SEE THIS"
@@ -80,4 +86,15 @@ end
 get '/logout' do
   session.clear
   redirect '/'
+end
+
+# create new vote object when Votes button clicked
+post '/votes' do
+  track_id = params[:track_id]
+  @vote = Vote.new(
+    track_id: track_id,
+    user_id: current_user.id
+    )
+  @vote.save
+  redirect(back)
 end
