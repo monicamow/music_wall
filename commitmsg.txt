@@ -1,3 +1,5 @@
-added some juicy bootstrap thangs
+new views, new models and testing sessions
 
-errors for Track.new now show the "alert alert-danger" example theme 
+- added login and signup to views
+- added User and Vote models and db tables
+- links to login and signup pages on home page

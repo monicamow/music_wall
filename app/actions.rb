@@ -1,4 +1,4 @@
-# Homepage (Root path)
+#Homepage (Root path)
 get '/' do
   erb :index
 end
@@ -33,3 +33,18 @@ get '/tracks/:id' do
   erb :'tracks/show'
 end
 
+# testing sessions
+enable :sessions
+
+# get '/' do
+#   session["value"] ||= "Hello world!"
+#   "The cookie you've created contains the value: #{session["value"]}"
+# end
+
+get '/login' do
+  erb :login
+end
+
+get '/signup' do
+  erb :signup
+end
