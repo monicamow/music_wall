@@ -1,9 +1,3 @@
-added functioning sessions
+checking to see if .gitignore ignores commitmsg.txt
 
-- get/post for login and signup started
-- must be logged in to see tracks page
-- html <p> to tell user they are logged in
-- added logout button
-- sign up creates new user
-- login searches for @user by username and password and then saves session[:id] = @user.id
-- NEED TO FIX: the way the tracks page accesses the current user/session
+DOES IT???
