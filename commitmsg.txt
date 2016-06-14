@@ -1,3 +1,0 @@
-checking to see if .gitignore ignores commitmsg.txt
-
-DOES IT???
