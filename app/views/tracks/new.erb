@@ -1,7 +1,7 @@
 <div style="margin: 10px">
 
 <% if @track && @track.errors.any? %>
-  <div style="color: #CC0000" class="alert alert-danger">
+  <div style="color: #CC0000; display: inline-block;" class="alert alert-danger">
     <strong>Some issues with your song post. Please fix them:</strong>
     <ul>
       <% @track.errors.full_messages.each do |message| %>

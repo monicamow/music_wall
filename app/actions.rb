@@ -92,9 +92,15 @@ end
 
 # post login info
 post '/login' do
+  # add if statement for if user is not found
   @user = User.find_by(username: params[:username], password: params[:password])
-  session[:id] = @user.id
-  redirect '/tracks'
+  unless @user
+    flash[:notice] = "Could not find you. "
+    redirect '/login'
+  else
+    session[:id] = @user.id
+    redirect '/tracks'
+  end
 end
 
 get '/signup' do

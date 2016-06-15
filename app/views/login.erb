@@ -2,6 +2,11 @@
 
 <h1>Log In Page</h1>
 
+<% if flash[:notice] %>
+<div style="color: #CC0000; display: inline-block;" class="alert alert-danger">
+  <strong><%= flash[:notice] %>Please try again or <a href='/signup'>sign up</a>.</strong>
+</div>
+<% end %>
 <form method="post" action="/login">
 
   <div class="form-group">
