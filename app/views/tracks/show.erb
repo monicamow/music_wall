@@ -1,10 +1,11 @@
 <div style="margin: 10px">
 
-<form>
+<form method="post" action="/review">
+  <input type="hidden" name="track_id" value="<%= @track.id %>">
   <div class="form-group">
     <label>Add Review:</label>
     <br>
-    <input type="text">
+    <input style="padding-bottom: 100px; width: 250px;" type="text" name="user_review">
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
@@ -15,8 +16,8 @@
   <hr>
   <h3>Reviews</h3>
   <p>
-  <% @track.reviews.each do |review| %>
-    <small>(time: <%= review.created_at %>)</small> - <%= review.user_review %>
+  <% @reviews.each do |review| %>
+    <p><small>(time: <%= review.created_at %>)</small> - <%= review.user_review %></p>
   <% end %>
   </p>
 

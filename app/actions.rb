@@ -44,7 +44,41 @@ end
 # show individual track posts
 get '/tracks/:id' do
   @track = Track.find(params[:id])
+  @reviews = @track.reviews
+  @review = Review.new
   erb :'tracks/show'
+end
+
+# move review post to separate action
+# post '/tracks/:id' do
+#   track_id = params[:id]
+#   @review = Review.new(
+#     track_id: track_id,
+#     user_id: current_user.id,
+#     user_review: params[:user_review]
+#     )
+#   if @review.save
+#     redirect "/tracks/#{track_id}"
+#   else
+#     "nope"
+#   end
+
+# end
+
+# separate action for posting reviews to track details page
+post '/review' do
+  track_id = params[:track_id]
+  @review = Review.new(
+    track_id: track_id,
+    user_id: current_user.id,
+    user_review: params[:user_review]
+    )
+  if @review.save
+    # erb :"tracks/show", locals: {id: track_id}
+    redirect "/tracks/#{track_id}"
+  else
+    "nope"
+  end
 end
 
 # get '/' do
