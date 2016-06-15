@@ -1,0 +1,37 @@
+V2
+
+(1) fix user login 
+    - add authentication
+    - add BCrypt gem
+      > add User model; user "has_secure_password"
+    - fix sessions
+(2) assign user_id to tracks
+    - each track should show who posted it
+    - get rid of author or change it to the artist
+    - test a user creating a new song
+(3) "What if the user is not logged in?
+    - They can still view the wall of songs but for simplicity, 
+    - perhaps we don't show them the up-vote button if they're not logged in. 
+    - How can this be accomplished?"
+(4) fix votes being ordered by count
+    - currently using a SQL LEFT JOIN ... see Richard's git comments
+(5) fix vote button
+    - "Perhaps only show the button for songs you haven't upvoted. 
+      > make the button red if you voted on the song already
+    - But how will you check if they have done so?"
+
+V3
+
+REVIEWS
+
+- You must be logged in in order to see the review form, otherwise you see a message saying that you must Sign In or Sign Up to review this song.
+- Users can only leave one review. The form should not show up if they have left a review already.
+- If the current user (logged in) has left a review, they can scroll down to that review and click a delete button to remove it from the list
+- Once removed, they can again leave a review (since they can only leave one review for a song)
+
+RATINGS w/ REVIEWS
+- As part of the reviews, ask the user for a score out of 5
+- Add rating field (integer) to reviews
+- It should be a drop-down instead of a text field
+- It should be required and also validate that the number is between 1 and 5
+- BONUS: Instead of a drop-down, allow the user to select the stars (there are numerous jQuery plugins to help with this)
